@@ -1,0 +1,98 @@
+/* ==========================================
+   CLOUDCLASS — Minimal Blue Theme (Fixed)
+   ========================================== */
+
+:root {
+    --primary-blue: #1A3D64;
+    /* Titles & highlights */
+    --secondary-blue: #8FABD4;
+    /* Table headers */
+    --accent-blue: #4A70A9;
+    /* Buttons */
+    --dark-navy: #0C2B4E;
+    /* Navbar */
+    --bg-light: #EFECE3;
+    /* Page background */
+    --white: #FFFFFF;
+    --text-dark: #000000;
+}
+
+/* GLOBAL */
+body {
+    background: var(--bg-light);
+    font-family: "Inter", sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* NAVBAR FIX */
+/* NAVBAR — Stable, Clean, Blue Theme */
+.custom-navbar {
+    background: var(--dark-navy);
+    padding: 14px 25px;
+}
+
+.custom-navbar .navbar-brand {
+    color: white !important;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.navbar-nav .nav-item .btn-accent {
+    padding: 6px 16px;
+    font-size: 0.9rem;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+/* BUTTONS */
+.btn-accent {
+    background: var(--accent-blue);
+    color: var(--white) !important;
+    padding: 6px 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+}
+
+.btn-accent:hover {
+    background: #3a5a85;
+}
+
+/* CARDS */
+.card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-blue);
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* HERO TITLE */
+.title {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
+/* TABLES */
+.table th {
+    background: var(--secondary-blue);
+    color: var(--dark-navy);
+    font-weight: 600;
+}
+
+.table tr:hover {
+    background: rgba(138, 171, 212, 0.15);
+}
+
+/* IMAGE BORDER */
+img {
+    border: 3px solid var(--secondary-blue);
+    border-radius: 10px;
+}

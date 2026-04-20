@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card p-4 mt-4">
+
+            <h3 class="fw-bold mb-3" style="color: var(--primary-blue);">
+                Welcome Back
+            </h3>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="fw-semibold" style="color: var(--primary-blue);">Username</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-semibold" style="color: var(--primary-blue);">Password</label>
+                    {{ form.password }}
+                </div>
+
+                <button class="btn btn-accent w-100 mt-3">
+                    Login
+                </button>
+            </form>
+
+            <p class="mt-3 small">
+                Don't have an account?
+                <a href="{% url 'signup' %}" style="color: var(--accent-blue); font-weight:600;">
+                    Sign up
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

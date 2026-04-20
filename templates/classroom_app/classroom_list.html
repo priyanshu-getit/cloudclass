@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 mt-4">
+
+    <h4 class="fw-bold mb-3" style="color: var(--primary-blue);">
+        Classrooms
+    </h4>
+
+    <a class="btn btn-accent btn-sm mb-3" href="{% url 'add_classroom' %}">
+        Add Classroom
+    </a>
+
+    <ul class="list-group">
+
+        {% for c in classrooms %}
+        <li class="list-group-item" style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+            <strong>{{ c.name }}</strong>
+            <span class="text-muted"> — capacity {{ c.capacity }}</span>
+        </li>
+        {% empty %}
+        <li class="list-group-item" style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+            No classrooms available.
+        </li>
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+{{ field }}
+
+<div class="row">
+
+    <!-- LEFT SIDE -->
+    <div class="col-md-8">
+
+        <!-- Welcome Panel -->
+        <div class="card p-4 mb-4">
+
+            <h4 class="fw-bold" style="color: var(--primary-blue);">
+                Welcome, {{ user.username }}
+            </h4>
+            <p class="small">Manage your classes, subjects, and attendance reports.</p>
+
+            <div class="row g-3 mt-2">
+
+                <!-- Classes Today -->
+                <div class="col-md-4">
+                    <div class="card p-3 text-center">
+                        <h6 class="fw-semibold" style="color: var(--primary-blue);">Classes Today</h6>
+                        <div class="h3 fw-bold">{{ classes_today|length }}</div>
+                    </div>
+                </div>
+
+                <!-- Manage Timetable -->
+                <div class="col-md-4">
+                    <div class="card p-3 text-center">
+                        <h6 class="fw-semibold" style="color: var(--primary-blue);">Manage Timetable</h6>
+
+                        <a class="btn btn-sm btn-accent mt-2" href="{% url 'add_timetable' %}">
+                            Add Entry
+                        </a>
+
+                        <a class="btn btn-sm btn-accent mt-2" href="{% url 'timetable_list_teacher' %}">
+                            My Timetables
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Subjects -->
+                <div class="col-md-4">
+                    <div class="card p-3 text-center">
+                        <h6 class="fw-semibold" style="color: var(--primary-blue);">Subjects</h6>
+
+                        <a class="btn btn-sm btn-accent mt-2" href="{% url 'subject_list' %}">
+                            Manage Subjects
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Today's Schedule -->
+        <div class="card p-4">
+            <h5 class="fw-bold" style="color: var(--primary-blue);">Today's Schedule</h5>
+
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Subject</th>
+                        <th>Classroom</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for c in classes_today %}
+                    <tr>
+                        <td>{{ c.start_time }} - {{ c.end_time }}</td>
+                        <td>{{ c.subject }}</td>
+                        <td>{{ c.classroom }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-accent" href="{% url 'attendance_report' c.id %}">
+                                View
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No classes today.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="col-md-4">
+
+        <!-- Quick Actions -->
+        <div class="card p-3 mb-3">
+            <h6 class="fw-bold" style="color: var(--primary-blue);">Quick Actions</h6>
+
+            <a class="btn btn-accent w-100 mb-2" href="{% url 'add_subject' %}">
+                Add Subject
+            </a>
+
+            <a class="btn btn-accent w-100 mb-2" href="{% url 'add_classroom' %}">
+                Add Classroom
+            </a>
+
+            <a class="btn btn-accent w-100 mb-2" href="{% url 'timetable_list_teacher' %}">
+                My Timetables
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

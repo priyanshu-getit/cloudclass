@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 mt-4">
+
+    <h4 class="fw-bold mb-3" style="color: var(--primary-blue);">
+        Subjects
+    </h4>
+
+    <a class="btn btn-accent btn-sm mb-3" href="{% url 'add_subject' %}">
+        Add Subject
+    </a>
+
+    <ul class="list-group">
+
+        {% for s in subjects %}
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+
+            <div>
+                <strong>{{ s.name }}</strong>
+                {% if s.code %}
+                <small class="text-muted">({{ s.code }})</small>
+                {% endif %}
+            </div>
+
+            <span class="text-muted small">
+                {% if s.teacher %}{{ s.teacher.username }}{% endif %}
+            </span>
+
+        </li>
+        {% empty %}
+
+        <li class="list-group-item" style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+            No subjects found.
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

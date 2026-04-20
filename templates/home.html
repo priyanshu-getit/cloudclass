@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row align-items-center">
+
+    <!-- LEFT PANEL -->
+    <div class="col-md-6">
+
+        <!-- Hero Card -->
+        <div class="card p-4 mb-4">
+            <h1 class="title">CloudClass — Smart Classroom</h1>
+
+            <p class="lead" style="color: var(--text-dark);">
+                Attend live classes, view smart timetables, automatic attendance,
+                and reminders — built for students & teachers.
+            </p>
+
+            <div class="mt-4">
+                <a class="btn btn-accent btn-lg me-2" href="{% url 'signup' %}">
+                    Get Started
+                </a>
+                <a class="btn btn-accent btn-lg" href="{% url 'login' %}">
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5 style="color: var(--primary-blue);">Smart Timetable</h5>
+                    <p class="small">Live indicators and countdown to next class.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5 style="color: var(--primary-blue);">Auto Attendance</h5>
+                    <p class="small">Attendance recorded instantly when you join.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5 style="color: var(--primary-blue);">Teacher Tools</h5>
+                    <p class="small">Manage schedules, attendance, and subjects.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE IMAGE -->
+    <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80" class="img-fluid rounded"
+            style="border: 3px solid var(--secondary-blue);">
+    </div>
+
+</div>
+
+{% endblock %}

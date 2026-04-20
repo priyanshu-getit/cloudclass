@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="d-flex justify-content-center mt-5">
+
+    <div class="card p-5" style="max-width: 500px;">
+
+        <h2 class="fw-bold mb-3" style="color: var(--primary-blue);">
+            403 — Access Denied
+        </h2>
+
+        <p class="mb-4" style="color: var(--dark-navy);">
+            You do not have permission to access this page.
+        </p>
+
+        <a href="{% url 'home' %}" class="btn btn-accent">
+            Go Back Home
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

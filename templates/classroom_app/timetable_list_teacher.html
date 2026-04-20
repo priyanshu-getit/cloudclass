@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+{{ field }}
+
+<div class="card p-4 mt-4">
+
+    <h4 class="fw-bold mb-3" style="color: var(--primary-blue);">
+        My Timetables
+    </h4>
+
+    <!-- Add Entry Button -->
+    <a href="{% url 'add_timetable' %}" class="btn btn-accent btn-sm mb-3">
+        Add Entry
+    </a>
+
+    <!-- Table -->
+    <table class="table align-middle">
+
+        <thead>
+            <tr>
+                <th style="background: var(--secondary-blue); color: var(--dark-navy);">Day</th>
+                <th style="background: var(--secondary-blue); color: var(--dark-navy);">Time</th>
+                <th style="background: var(--secondary-blue); color: var(--dark-navy);">Subject</th>
+                <th style="background: var(--secondary-blue); color: var(--dark-navy);">Classroom</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for t in timetables %}
+            <tr class="border-start" style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+                <td>{{ t.get_day_display }}</td>
+                <td>{{ t.start_time }} – {{ t.end_time }}</td>
+                <td>{{ t.subject }}</td>
+                <td>{{ t.classroom }}</td>
+            </tr>
+            {% empty %}
+            <tr class="border-start" style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+                <td colspan="4">No entries</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

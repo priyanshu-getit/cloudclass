@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-8">
+        <h3 class="fw-bold mb-2">Welcome to CloudClass</h3>
+        <p class="text-muted">Your smart classroom assistant.</p>
+
+        <div class="glass p-4 mt-3">
+            <h5 class="fw-bold">Upcoming Classes</h5>
+
+            <ul class="list-group mt-2">
+                {% for t in sample %}
+                <li class="list-group-item" style="background:white;">
+                    {{ t.subject }} — {{ t.get_day_display }} {{ t.start_time }}
+                </li>
+                {% empty %}
+                <li class="list-group-item" style="background:white;">
+                    No classes yet.
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glass p-4">
+            <h5 class="fw-bold">Quick Links</h5>
+            <ul>
+                <li><a href="{% url 'timetable_list_student' %}">Student Timetable</a></li>
+                <li><a href="{% url 'timetable_list_teacher' %}">Teacher Timetable</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

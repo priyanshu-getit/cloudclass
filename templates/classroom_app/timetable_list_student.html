@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 mt-4">
+
+    <h4 class="fw-bold mb-3" style="color: var(--primary-blue);">
+        Full Timetable — {{ classroom }}
+    </h4>
+
+    <table class="table align-middle">
+        <thead>
+            <tr style="background: var(--secondary-blue); color: var(--dark-navy);">
+                <th>Day</th>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Join</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for t in timetables %}
+            <tr style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+                <td>{{ t.get_day_display }}</td>
+                <td>{{ t.start_time }} - {{ t.end_time }}</td>
+                <td>{{ t.subject }}</td>
+                <td>{{ t.teacher.username }}</td>
+                <td>
+                    {% if t.meeting_link %}
+                    <button class="btn btn-sm btn-accent join-btn" data-pk="{{ t.id }}">
+                        Join
+                    </button>
+                    {% else %}
+                    <small class="text-muted">No link</small>
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr style="background: var(--white); border-left: 4px solid var(--primary-blue);">
+                <td colspan="5">No classes</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.querySelectorAll('.join-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const pk = this.dataset.pk;
+
+            fetch("{% url 'join_class' 0 %}".replace('/0/', '/' + pk + '/'), {
+                method: 'POST',
+                headers: { 'X-CSRFToken': '{{ csrf_token }}' }
+            })
+                .then(res => res.json())
+                .then(resp => {
+                    if (resp.meeting_link) {
+                        window.open(resp.meeting_link, '_blank');
+                    } else {
+                        alert(resp.message);
+                    }
+                });
+        });
+    });
+</script>
+{% endblock %}
