@@ -33,4 +33,4 @@ Deployed on Render using Gunicorn and Django.
 
 ---
 
-👩‍💻 Developed by Amisha Bansal
+👩‍💻 Developed by Priyanshu Rawat
